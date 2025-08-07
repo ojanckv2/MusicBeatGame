@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyDummy : MonoBehaviour
 {
+    protected PlayerControls player;
     protected LevelManager levelManager;
     protected View_HitOrMisses viewHitOrMisses;
     protected InputManager inputManager;
@@ -17,6 +18,11 @@ public class EnemyDummy : MonoBehaviour
     public int GetCurrentLane() => currentLane;
 
     private bool isOnTriggerArea = false;
+
+    public void SetPlayer(PlayerControls player)
+    {
+        this.player = player;
+    }
 
     public void SetLevelManager(LevelManager level)
     {
@@ -90,6 +96,7 @@ public class EnemyDummy : MonoBehaviour
     private void OnPlayerAttack()
     {
         if (!isOnTriggerArea) return;
+        if (player.GetCurrentLane() != currentLane) return;
 
         // Handle enemy being attacked logic here
         Debug.Log("Enemy Dummy attacked!");

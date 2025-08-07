@@ -41,6 +41,21 @@ public class PlayerControls : MonoBehaviour
         SetUpInputs();
     }
 
+    public void PauseMovement()
+    {
+        animator.speed = 0f;
+    }
+
+    public void ResumeMovement()
+    {
+        animator.speed = 1f;
+    }
+
+    public void SetIdle()
+    {
+        animator.SetBool("Run", false);
+    }
+
     private void SetUpInputs()
     {
         inputManager = SceneCore.GetService<InputManager>();

@@ -4,8 +4,10 @@ using UnityEngine.Events;
 
 public class LevelManager : SceneService
 {
+    private AudioManager audioManager;
     private EnemyManager enemyManager;
 
+    [SerializeField] private string musicCode = "BP_HowYouLikeThat";
     [SerializeField] private float bpm = 120f; // Beats per minute
     public float BPM => bpm;
 
@@ -17,11 +19,31 @@ public class LevelManager : SceneService
     private int enemiesKilled = 0;
     private int numberOfEnemies;
 
+    public UnityEvent onLevelEnd = new();
+    public UnityEvent onLevelPaused = new();
+    public UnityEvent onLevelResumed = new();
+
+    private void PauseLevel()
+    {
+        audioManager.PauseMusic();
+        audioManager.PauseSFX();
+        onLevelPaused.Invoke();
+    }
+
+    private void ResumeLevel()
+    {
+        audioManager.ResumeMusic();
+        audioManager.ResumeSFX();
+        onLevelResumed.Invoke();
+    }
+
     private Coroutine levelTimerCoroutine;
     protected override void OnActivate()
     {
-        // Initialize level settings, such as number of enemies
+        audioManager = SceneCore.GetService<AudioManager>();
         enemyManager = SceneCore.GetService<EnemyManager>();
+
+        // Initialize level settings, such as number of enemies
         if (enemyManager == null)
             Debug.LogError("EnemyManager is not assigned or not found in the scene.");
         else {
@@ -29,6 +51,7 @@ public class LevelManager : SceneService
         }
 
         levelTimerCoroutine = StartCoroutine(StartLevelTimer());
+        audioManager.PlayMusic(musicCode);
     }
 
     private IEnumerator StartLevelTimer()
@@ -73,12 +96,16 @@ public class LevelManager : SceneService
         Debug.Log($"Completion Percentage: {percentage}%");
         
         var stars = percentage switch {
-            >= 90 => 3,
+            >= 100 => 3,
             >= 70 => 2,
             >= 50 => 1,
             _ => 0
         };
         Debug.Log($"Stars Earned: {stars}");
+        
+        onLevelEnd.Invoke();
+        audioManager.StopMusic();
+        PlayerControls.player.SetIdle();
     }
 
     private int CalculateScore()

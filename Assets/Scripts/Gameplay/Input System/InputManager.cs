@@ -13,6 +13,12 @@ public class InputManager : SceneService
     [HideInInspector] public UnityEvent onSkillTwoInput = new();
     [HideInInspector] public UnityEvent onSkillThreeInput = new();
 
+    private bool canInput = true;
+    public bool CanInput {
+        get => canInput;
+        set => canInput = value;
+    }
+
     protected override void OnActivate()
     {
         mobileInputHandler.Initialize();
@@ -35,31 +41,37 @@ public class InputManager : SceneService
 
     private void InvokeLeftInput()
     {
+        if (!canInput) return;
         onLeftInput?.Invoke();
     }
 
     private void InvokeRightInput()
     {
+        if (!canInput) return;
         onRightInput?.Invoke();
     }
 
     private void InvokeAttackInput()
     {
+        if (!canInput) return;
         onAttackInput?.Invoke();
     }
 
     private void InvokeSkillOneInput()
     {
+        if (!canInput) return;
         onSkillOneInput?.Invoke();
     }
 
     private void InvokeSkillTwoInput()
     {
+        if (!canInput) return;
         onSkillTwoInput?.Invoke();
     }
 
     private void InvokeSkillThreeInput()
     {
+        if (!canInput) return;
         onSkillThreeInput?.Invoke();
     }
 }

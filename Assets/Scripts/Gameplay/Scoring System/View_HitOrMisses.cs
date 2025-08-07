@@ -35,5 +35,8 @@ public class View_HitOrMisses : SceneServiceView
 
         yield return new WaitForSeconds(indicatorDuration);
         LeanPool.Despawn(spawnedIndicator);
+
+        currentIndicator = null;
+        previousCoroutine = null;
     }
 }
