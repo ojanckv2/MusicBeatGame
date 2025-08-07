@@ -26,6 +26,7 @@ public class LevelManager : SceneService
     private int enemiesKilled = 0;
     private int numberOfEnemies;
 
+    public UnityEvent onLevelStarted = new();
     public UnityEvent onLevelEnd = new();
     public UnityEvent onLevelPaused = new();
     public UnityEvent onLevelResumed = new();
@@ -81,6 +82,8 @@ public class LevelManager : SceneService
 
         levelTimerCoroutine = StartCoroutine(StartLevelTimer());
         audioManager.PlayMusic(musicCode);
+
+        onLevelStarted?.Invoke();
     }
 
     private IEnumerator StartLevelTimer()
