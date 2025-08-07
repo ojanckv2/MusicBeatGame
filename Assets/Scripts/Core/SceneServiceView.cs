@@ -27,13 +27,13 @@ public class SceneServiceView : MonoBehaviour
     {
         if (isActive) return;
 
+        OnActivate();
+        isActive = true;
+
         if (dontHideOnActivate == false)
         {
             SnapHide();
         }
-
-        OnActivate();
-        isActive = true;
     }
 
     public void Deactivate()
@@ -73,6 +73,10 @@ public class SceneServiceView : MonoBehaviour
         var startValue = 0f;
         var elapsed = 0f;
 
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+        onShow?.Invoke();
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -80,16 +84,15 @@ public class SceneServiceView : MonoBehaviour
             canvasGroup.alpha = Mathf.Lerp(startValue, endValue, t);
             yield return null;
         }
-
         canvasGroup.alpha = endValue;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-
-        onShow?.Invoke();
     }
 
     private IEnumerator FadeOut()
     {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        onHide?.Invoke();
+
         var duration = 0.25f;
         var endValue = 0f;
         var startValue = canvasGroup.alpha;
@@ -104,9 +107,5 @@ public class SceneServiceView : MonoBehaviour
         }
 
         canvasGroup.alpha = endValue;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-
-        onHide?.Invoke();
     }
 }

@@ -49,6 +49,8 @@ public class SceneCore : MonoBehaviour
         {
             service.Activate();
         }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Deactivate()

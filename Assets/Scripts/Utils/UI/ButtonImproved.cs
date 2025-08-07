@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ButtonImproved : MonoBehaviour
 {
-    private Button button;
+    protected Button button;
     public UnityEvent onPreClick = new();
     public UnityEvent onPostClick = new();
 

@@ -22,4 +22,15 @@ public class GUIButtons : SceneServiceView
         buttonMap.Add("SkillTwo", skillTwoButton);
         buttonMap.Add("SkillThree", skillThreeButton);
     }
+
+    public ButtonImproved GetSkillButton(int skillIndex)
+    {
+        return skillIndex switch
+        {
+            1 => skillOneButton,
+            2 => skillTwoButton,
+            3 => skillThreeButton,
+            _ => null
+        };
+    }
 }
