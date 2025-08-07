@@ -1,0 +1,46 @@
+Thank you for downloading the Knight! You are free to use and share it in VRchat or for use in your personal or comercial projects 
+and I would be greatful if you could credit me in any way! What you cannot do is sell and/or redistribute the model for profit.
+
+For easy vrchat uploading check out this site: https://vrcmods.com/item/1485
+
+Uploading to VRchat:
+
+1. Before you open the package in unity make sure you are using the same version of unity as the current VRchat build
+2. Login into VRChat SDK inside Unity using your VRChat account (same as ingame)
+3. Open .unitypackage file in Unity
+4. Select Unity Scene if provided in package
+5. Open Build Control Panel under VRChat SDK
+6. Click Build & Publish
+7. Fill in avatar information & Click Upload
+8. Launch VRChat and see your new Avatar!
+
+And you're all set on uploading the knight model to you're VRchat account! If you do not know how to upload models to VRchat, it may
+be best to google vrchat guides or youtube video as they can explain how in way more detail then I can here.
+
+To get in touch you can find me on these:
+
+https://twitter.com/uwusoft
+https://uwusoft.tumblr.com/
+https://www.patreon.com/uwusoft
+uwusoft@gmail.com
+
+=Change Log=
+
+1.0.0
+Initial Released
+
+
+           ,++   ,+     ,,      +++++,      ,,     +++       ++++++,            
+           ¦¦¦++¦¦¦¦L+¦¦¦¦¦¦@, ¦¦¦¦¦¦¦¦ +¦¦¦¦¦¦¦-  ¦¦¦¦     ¦¦¦¦¦¦¦¦¦           
+    ,,     ¦¦¦¦¦¦¦¦"+¦¦¦¦+¦¦¦¦N¦¦¦¦¦¦¦¦¦¦¦¦¦-+¦¦¦¦n¦¦¦¦     ¦¦¦¦¦+¦¦¦¦    ,,    
+    ¦¦¦¦¦  ¦¦¦¦¦¦¦  ¦¦¦¦  ,¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦  ¦¦¦¦¦¦¦¦¦     ¦¦¦¦C ¦¦¦¦ Æ¦¦¦¦    
+     +¦¦¦  ¦¦¦¦¦¦¦¦¦+¦¦¦¦¦¦¦¦¦¯¦¦¦¦_¦¦¦¦¦¦¦¦¦¦¦¦¦¦ ¦¦¦¦¦¦¦¦w¦¦¦¦¦¦¦¦¦¦ ¯¦¦¯     
+  ,_¦¦¦_   ¦¦¦¯ +¦¦¦" +¦¦¦¦¦¯  ¯¦¦¦¦¦¦¯   ¦¦¦¦¦¦"  ¦¦¦¦¦¦¦¦¯+¦¦¦¦¦¦¦¯   +¦¦¦_+  
+   +¦¦¦¦     ,++++,      +N+    ,++++++   ++++++,   ++++++, +++   ,++   ¦¦¦¦¯   
+     +_g+  @¦¦¦¦¦¦¦¦µ   ¦¦¦¦¦   ¦¦¦¦¦¦¦¦+¦¦¦¦¦¦¦¦¦ ¦¦¦¦¦¦¦¦¦¦¦¦¦, ¦¦¦¦ +g__     
+   +¦¦¦¦¦ +¦¦¦¦+¦¦¦¦   ¦¦¦¦¦¦¦  ¦¦¦¦+¦¦¦¦¦¦¦¦¯"¦¦¦¦¦¦¦¦¦¦¦,]¦¦¦¦¦¦¦¦¦¦ ¦¦¦¦¦W   
+          ¦¦¦¦H¦¦¦¦¦¦ ¦¦¦¦¦¦¦¦¦ ¦¦¦¦¦¦¦¦¯¦¦¦¦  ¦¦¦+¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦          
+          +¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦+¦¦¦¦¦          
+            +¦¦¦¦¦¦¯ +¦¦¯   +¦¦¦+¦¦¦ +¦¦¯'¦¦¦¦¦¦¦¯ +¦¦¦¦¦¦¦"¦¦¦"  ¯¦¦¯    
+
+
