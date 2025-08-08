@@ -69,6 +69,7 @@ public class View_GameResult : SceneServiceView
 
     private IEnumerator AnimateScore(float score)
     {
+        score = Mathf.Round(score);
         float displayedScore = 0;
         float duration = 1.0f;
         float elapsed = 0f;
@@ -77,11 +78,11 @@ public class View_GameResult : SceneServiceView
         {
             elapsed += Time.deltaTime;
             displayedScore = Mathf.Lerp(0, score, elapsed / duration);
-            textScoreAmount.text = displayedScore.ToString("00.00");
+            textScoreAmount.text = displayedScore.ToString("00");
             yield return null;
         }
 
-        textScoreAmount.text = score.ToString("00.00");
+        textScoreAmount.text = score.ToString("00");
 
         yield return FadeInContainerButton();
     }
