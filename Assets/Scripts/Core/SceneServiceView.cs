@@ -8,7 +8,7 @@ public class SceneServiceView : MonoBehaviour
 {
     private bool isActive = false;
 
-    protected CanvasGroup canvasGroup;
+    [SerializeField] protected CanvasGroup canvasGroup;
     private void OnValidate()
     {
         var hasCanvasGroup = TryGetComponent(out canvasGroup);
@@ -61,9 +61,12 @@ public class SceneServiceView : MonoBehaviour
 
     private void SnapHide()
     {
-        canvasGroup.alpha = 0f;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
     }
 
     private IEnumerator FadeIn()

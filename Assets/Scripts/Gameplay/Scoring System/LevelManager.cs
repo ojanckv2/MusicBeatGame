@@ -165,6 +165,8 @@ public class LevelManager : SceneService
 
     private void RestartLevel()
     {
+        SceneCore.DestroySceneCore();
+
         var activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadSceneAsync(activeScene.name);
     }

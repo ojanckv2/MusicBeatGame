@@ -16,8 +16,12 @@ public class SceneCore : MonoBehaviour
         Instance = this;
         FetchSceneServices();
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
         Initialize();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(Activate());   
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -81,7 +81,7 @@ public class View_GameResult : SceneServiceView
             yield return null;
         }
 
-        textScoreAmount.text = score.ToString();
+        textScoreAmount.text = score.ToString("00.00");
 
         yield return FadeInContainerButton();
     }

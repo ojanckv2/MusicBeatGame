@@ -15,6 +15,7 @@ public class MainMenuManager : SceneService
     private void GoToMainGame()
     {
         view_MainMenu.BlockUI(true);
+        SceneCore.DestroySceneCore();
         SceneManager.LoadSceneAsync("MainGame");
     }
 

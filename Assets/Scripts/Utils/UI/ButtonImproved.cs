@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ButtonImproved : MonoBehaviour
 {
-    protected Button button;
+    [SerializeField] protected Button button;
     public UnityEvent onPreClick = new();
     public UnityEvent onPostClick = new();
     
@@ -23,7 +23,10 @@ public class ButtonImproved : MonoBehaviour
             Debug.LogWarning("Button component is missing. Creating one automatically...");
             button = gameObject.AddComponent<Button>();
         }
+    }
 
+    protected virtual void Awake()
+    {
         button.onClick.AddListener(OnClick);
     }
 
