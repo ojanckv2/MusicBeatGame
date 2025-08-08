@@ -15,6 +15,7 @@ public class Skill_AreaDestroy : MonoBehaviour, ISkillHandler
     public float CooldownTime => cooldownTime;
 
     [SerializeField] private ParticleSystem onSkillCastVFX;
+    [SerializeField] private float VFXPosY = 0.0725f;
 
     private bool isActive = true;
     public void Cast()
@@ -29,7 +30,7 @@ public class Skill_AreaDestroy : MonoBehaviour, ISkillHandler
 
             if (onSkillCastVFX != null)
             {
-                StartCoroutine(SpawnOnSkillCastVFX());
+                StartCoroutine(SpawnOnSkillCastVFX(enemy.transform));
             }
 
             enemy.OnUniquePlayerAttack(); // Assuming TakeDamage is a method in EnemyDummy
@@ -48,12 +49,13 @@ public class Skill_AreaDestroy : MonoBehaviour, ISkillHandler
         isActive = true;
     }
 
-    private IEnumerator SpawnOnSkillCastVFX()
+    private IEnumerator SpawnOnSkillCastVFX(Transform enemyTransform)
     {
-        var vfx = LeanPool.Spawn(onSkillCastVFX, transform.position, Quaternion.identity);
+        var vfx = LeanPool.Spawn(onSkillCastVFX, enemyTransform.position, Quaternion.identity);
+        vfx.transform.position = new Vector3(vfx.transform.position.x, VFXPosY, vfx.transform.position.z);
         vfx.Play();
 
-        yield return new WaitForSeconds(vfx.main.duration);
+        yield return new WaitForSeconds(3f);
 
         LeanPool.Despawn(vfx.gameObject);
     }

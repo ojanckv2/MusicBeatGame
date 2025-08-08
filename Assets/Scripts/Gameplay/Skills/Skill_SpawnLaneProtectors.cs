@@ -34,15 +34,15 @@ public class Skill_SpawnLaneProtectors : MonoBehaviour, ISkillHandler
         StartCoroutine(CooldownTimer());
     }
 
-    private List<GameObject> laneProtectors = new();
+    private readonly Dictionary<int, GameObject> laneProtectors = new();
     private void SpawnLaneProtectors()
     {
         ClearLaneProtectors(); // Clear existing lane protectors
-        
+
         for (int i = 0; i < 3; i++) // Assuming 3 lanes
         {
             var protector = LeanPool.Spawn(laneProtectorPrefab, lanePositions[i], Quaternion.identity);
-            laneProtectors.Add(protector);
+            laneProtectors.Add(i, protector);
 
             triggerAreaEnemyLine.SetLaneProtection(i, true); // Set lane protection
         }
@@ -50,25 +50,22 @@ public class Skill_SpawnLaneProtectors : MonoBehaviour, ISkillHandler
 
     private void ClearLaneProtectors()
     {
-        foreach (var protector in laneProtectors)
-        {
-            if (protector != null)
-            {
-                LeanPool.Despawn(protector);
-            }
+        foreach (var keyValuePair in laneProtectors) {
+            LeanPool.Despawn(keyValuePair.Value);
         }
         laneProtectors.Clear();
     }
 
     private void DespawnLaneProtector(int index)
     {
-        if (index < 0 || index >= laneProtectors.Count) return;
+        var hasProtector = laneProtectors.ContainsKey(index);
+        if (hasProtector == false) return;
 
         var protector = laneProtectors[index];
         if (protector != null)
         {
             LeanPool.Despawn(protector);
-            laneProtectors.RemoveAt(index);
+            laneProtectors.Remove(index);
         }
     }
 

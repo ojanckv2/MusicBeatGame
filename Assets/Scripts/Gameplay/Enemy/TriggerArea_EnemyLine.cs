@@ -16,8 +16,9 @@ public class TriggerArea_EnemyLine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var isEnemy = other.TryGetComponent(out EnemyDummy enemyDummy);
-        if (isEnemy)
+        if (isEnemy) {
             enemyDummy.SetTrueOnTriggerArea();
+        }
     }
 
     private void OnTriggerExit(Collider other)

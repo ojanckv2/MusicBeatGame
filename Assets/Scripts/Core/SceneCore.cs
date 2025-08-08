@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneCore : MonoBehaviour
 {
@@ -15,7 +17,16 @@ public class SceneCore : MonoBehaviour
         FetchSceneServices();
 
         Initialize();
-        Activate();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(Activate());   
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(Activate());
     }
 
     private void Initialize()
@@ -34,12 +45,16 @@ public class SceneCore : MonoBehaviour
         }
     }
 
-    private void Activate()
+    private IEnumerator Activate()
     {
+        yield return new WaitForSeconds(.2f);
+
         foreach (var service in sceneServices)
         {
             service.Activate();
         }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Deactivate()
